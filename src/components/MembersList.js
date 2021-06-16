@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MemberCard from "./MemberCard";
 
@@ -21,7 +22,9 @@ const MembersList = () => {
         placeholder="Search for a member ..."
         onChange={(event) => setQuery(event.target.value)}
       />
-      <button>Add a Member</button>
+      <Link to="/NewMember">
+        <button>Add a Member</button>
+      </Link>
       <div>{membersList}</div>
     </div>
   );

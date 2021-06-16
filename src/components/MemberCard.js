@@ -13,16 +13,22 @@ const MemberCard = (props) => {
   return (
     <div style={{ borderStyle: "solid" }}>
       <p>Name : {`${props.member.firstName} ${props.member.lastName}`}</p>
-      {/* <p>
-        Borrowed Books :
-        {booksTitle.map((book) => (
-          <text>{book.title},</text>
-        ))}
-      </p>
-      <p>Membership : {props.member.membership}</p> */}
+
       <Link to={`/MemberDetail/${memberSlug}`}>
         <button>Details</button>
       </Link>
+
+      {props.member.membership === "silver" && borrowdBooks.length >= 2 ? (
+        <p>You cant borrow!</p>
+      ) : props.member.membership === "gold" && borrowdBooks.length >= 3 ? (
+        <p>You cant borrow!</p>
+      ) : props.member.membership === "platinum" && borrowdBooks.length >= 5 ? (
+        <p>You cant borrow!</p>
+      ) : (
+        <Link to={`/books/borrow/${memberSlug}`}>
+          <button>Borrow</button>
+        </Link>
+      )}
     </div>
   );
 };

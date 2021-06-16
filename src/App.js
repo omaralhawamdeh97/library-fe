@@ -4,19 +4,33 @@ import MembersList from "./components/MembersList";
 import { Route, Switch } from "react-router";
 import MemberDetail from "./components/MemberDetail";
 import BookDetails from "./components/BookDetalis";
+import NewBook from "./components/NewBook";
+import NewMember from "./components/NewMember";
+import { MainDiv } from "./styles";
+import Borrow from "./components/Borrow";
 
 function App() {
   return (
     <Switch>
       <div className="App">
-        <div>
+        <MainDiv>
           <Route exact path="/BookDetail/:bookSlug">
             <BookDetails />
           </Route>
-        </div>
+        </MainDiv>
         <div>
           <Route exact path="/MemberDetail/:memberSlug">
             <MemberDetail />
+          </Route>
+        </div>
+        <div>
+          <Route exact path="/NewBook">
+            <NewBook />
+          </Route>
+        </div>
+        <div>
+          <Route exact path="/NewMember">
+            <NewMember />
           </Route>
         </div>
         <div>
@@ -29,6 +43,9 @@ function App() {
             <BooksList />
           </Route>
         </div>
+        <Route exact path="/books/borrow/:memberSlug">
+          <Borrow />
+        </Route>
       </div>
     </Switch>
   );

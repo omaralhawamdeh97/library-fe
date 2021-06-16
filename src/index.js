@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+//bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
-
 //Routes
 import { BrowserRouter } from "react-router-dom";
 
