@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 
 const BookCard = (props) => {
   const members = useSelector((state) => state.members);
+
   const borrowedMembers = props.book.borrowedBy;
   const member = borrowedMembers.map((member) =>
     members.find((m) => m.id === member)

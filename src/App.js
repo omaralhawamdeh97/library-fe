@@ -1,17 +1,24 @@
 import "./App.css";
 import BooksList from "./components/BooksList";
 import MembersList from "./components/MembersList";
+import { Route, Switch } from "react-router";
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <MembersList />
+    <Switch>
+      <div className="App">
+        <div>
+          <Route exact path="/">
+            <MembersList />
+          </Route>
+        </div>
+        <div>
+          <Route exact path="/">
+            <BooksList />
+          </Route>
+        </div>
       </div>
-      <div>
-        <BooksList />
-      </div>
-    </div>
+    </Switch>
   );
 }
 
