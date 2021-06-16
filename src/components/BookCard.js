@@ -1,16 +1,14 @@
 import { useSelector } from "react-redux";
+import { DetailButton } from "../styles";
+import BookDetails from "./BookDetalis";
+import { Link } from "react-router-dom";
 
 const BookCard = (props) => {
   const members = useSelector((state) => state.members);
 
-  const borrowedMembers = props.book.borrowedBy;
-  const member = borrowedMembers.map((member) =>
-    members.find((m) => m.id === member)
-  );
-
+  const bookSlug = props.book.slug;
   return (
     <div style={{ borderStyle: "solid" }}>
-      <p>Author : {props.book.author}</p>
       <p>Title : {props.book.title}</p>
       <p>
         Genre :
@@ -18,15 +16,9 @@ const BookCard = (props) => {
           <text>{genre},</text>
         ))}
       </p>
-      <p>
-        Availablity : {props.book.available ? "Available" : "Not Available"}
-      </p>
-      <p>
-        Borrowed By :
-        {member.map((member) => (
-          <text>{` ${member.firstName} ${member.lastName},`}</text>
-        ))}
-      </p>
+      <Link to={`/BookDetail/${bookSlug}`}>
+        <DetailButton>Details</DetailButton>
+      </Link>
     </div>
   );
 };

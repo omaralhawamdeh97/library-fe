@@ -7,12 +7,14 @@ import { useSelector } from "react-redux";
 
 const MemberDetail = () => {
   const members = useSelector((state) => state.members);
-  const { memberSlug } = useParams();
-  console.log(memberSlug, "slugg");
-  const member = members.find((m) => m.slug === memberSlug);
-  console.log(member, "mmm");
-
   const books = useSelector((state) => state.books);
+
+  const { memberSlug } = useParams();
+  // console.log(memberSlug, "slugg");
+
+  const member = members.find((m) => m.slug === memberSlug);
+  // console.log(member, "mmm");
+
   if (!member) return <Redirect to="/" />;
   const borrowdBooks = member.currentlyBorrowedBooks;
   const booksTitle = borrowdBooks.map((book) =>
