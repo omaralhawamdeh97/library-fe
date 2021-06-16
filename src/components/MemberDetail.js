@@ -1,27 +1,35 @@
-import { Link, Redirct, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 //components
-// import AddBook from "./buttons/AddButton"
+
 //Styling
 // import {AddBook} from "../styles"
 
-const MemberDetail = ({ addBook }) => {
+const MemberDetail = () => {
   const members = useSelector((state) => state.members);
   const { memberSlug } = useParams();
-  const member = members.find((member) => member.slug === memberSlug);
+  console.log(memberSlug, "slugg");
+  const member = members.find((m) => m.slug === memberSlug);
+  console.log(member, "mmm");
 
-  if (!member) return <Redirct to="./members" />;
+  const books = useSelector((state) => state.books);
+  if (!member) return <Redirect to="/" />;
+  const borrowdBooks = member.currentlyBorrowedBooks;
+  const booksTitle = borrowdBooks.map((book) =>
+    books.find((e) => e.id === book)
+  );
 
   return (
     <div>
-      <Link to="//members">Back to Members</Link>
-      <h1>
-        `${member.firstName} {member.lastName}`
-      </h1>
-      <p>{member.currentlyBorrowedBooks}</p>
-      <p>{member.membership}</p>
-
-      <AddMember memberId={member.id} addMember={addMember} />
+      <Link to="./MemberList">Back to Members</Link>
+      <h1>{`${member.firstName} ${member.lastName}`}</h1>
+      <p>
+        Borrowed Books :
+        {booksTitle.map((book) => (
+          <text>{book.title},</text>
+        ))}
+      </p>
+      <p>Membership : {member.membership}</p>
     </div>
   );
 };
