@@ -1,24 +1,20 @@
-// Styling
-// import { ListWrapper } from "../styles";
-// Components
-import MemberInfo from "./MemberCard";
-// import SearchBar from "./SearchBar";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import MemberCard from "./MemberCard";
 
 const MembersList = () => {
   const members = useSelector((state) => state.members);
 
-  const [query, setQuery] = useState("");
-
-  const membersList = members
-    .filter((member) => member.name.toLowerCase().includes(query.toLowerCase()))
-    .map((member) => <memberCard member={member} key={member.id} />);
+  const membersList = members.map((member) => (
+    <MemberCard member={member} key={member.id} />
+  ));
 
   return (
     <div>
-      <SearchBar setQuery={setQuery} />
-      <ListWrapper>{membersList}</ListWrapper>
+      <h1>Members List : </h1>
+      <input type="text" placeholder="Search for a member ..." />
+      <button>Add a Member</button>
+      <div>{membersList}</div>
     </div>
   );
 };

@@ -1,18 +1,21 @@
-// Components
-// import AddButton from "./buttons/AddButton";
-import { Link } from "react-router-dom";
-// Styling
+import { useSelector } from "react-redux";
 
-const MemberCard = ({ member, addMember }) => {
+const MemberCard = (props) => {
+  const books = useSelector((state) => state.books);
+  const borrowdBooks = props.member.currentlyBorrowedBooks;
+  const booksTitle = borrowdBooks.map((book) =>
+    books.find((e) => e.id === book)
+  );
   return (
-    <div>
+    <div style={{ borderStyle: "solid" }}>
+      <p>Name : {`${props.member.firstName} ${props.member.lastName}`}</p>
       <p>
-        `${member.firstName} {member.lastName}`
+        Borrowed Books :
+        {booksTitle.map((book) => (
+          <text>{book.title},</text>
+        ))}
       </p>
-      <p>{member.currentlyBorrowedBooks}</p>
-      <p>{member.membership}</p>
-
-      <AddButton memberId={member.id} />
+      <p>Membership : {props.member.membership}</p>
     </div>
   );
 };
