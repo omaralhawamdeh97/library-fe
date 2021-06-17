@@ -33,6 +33,8 @@ const Borrow = () => {
         )}
       </h4>
       <Link to="/">back to home</Link>
+      <br />
+      <Link to="/memberslist">back to Members List</Link>
     </div>
   );
 };

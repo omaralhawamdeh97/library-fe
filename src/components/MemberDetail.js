@@ -23,7 +23,7 @@ const MemberDetail = () => {
 
   return (
     <div>
-      <Link to="./MemberList">Back to Members</Link>
+      <Link to="/MembersList">Back to Members</Link>
       <h1>{`${member.firstName} ${member.lastName}`}</h1>
       <p>
         Borrowed Books :

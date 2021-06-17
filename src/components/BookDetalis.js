@@ -8,15 +8,15 @@ const BookDetails = () => {
   const { bookSlug } = useParams();
 
   const book = books.find((m) => m.slug === bookSlug);
-  if (!book) return <Redirect to="/" />;
   const borrowedMembers = book.borrowedBy;
   const memberName = borrowedMembers.map((member) =>
     members.find((m) => m.id === member)
   );
 
+  if (!book) return <Redirect to="/" />;
   return (
     <DetailDiv>
-      <Link to="./BookList">Back to Books</Link>
+      <Link to="/BooksList">Back to Books</Link>
       <p>Title : {book.title}</p>
       <p>
         Genre :

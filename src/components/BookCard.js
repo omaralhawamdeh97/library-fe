@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   DetailButton,
   AvailableButton,
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { returnBook } from "../store/actions";
 
 const BookCard = (props) => {
-  // const members = useSelector((state) => state.members);
   const dispatch = useDispatch();
 
   const handleClick = () => {

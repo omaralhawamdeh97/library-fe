@@ -6,9 +6,9 @@ const MemberCard = (props) => {
 
   const borrowdBooks = props.member.currentlyBorrowedBooks;
 
-  const booksTitle = borrowdBooks.map((book) =>
-    books.find((e) => e.id === book)
-  );
+  // const booksTitle = borrowdBooks.map((book) =>
+  //   books.find((e) => e.id === book)
+  // );
   const memberSlug = props.member.slug;
   return (
     <div style={{ borderStyle: "solid" }}>

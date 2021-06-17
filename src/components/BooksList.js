@@ -26,6 +26,7 @@ const BooksList = () => {
       <Link to="/NewBook">
         <button>Add a Book</button>
       </Link>
+      <Link to="/">Home</Link>
       <div>{booksList}</div>
     </div>
   );

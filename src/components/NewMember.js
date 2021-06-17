@@ -1,6 +1,13 @@
-import { useState } from "react";
+//Redux
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+//React
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router";
+import { createMember } from "../store/actions";
+import { Link } from "react-router-dom";
 
 //styling
 import FormControl from "@material-ui/core/FormControl";
@@ -8,10 +15,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
-
-import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { createMember } from "../store/actions";
+import { BodyButtons, BodyLinks, XX } from "../styles";
 
 const NewMember = () => {
   const useStyles = makeStyles((theme) => ({
@@ -69,59 +73,73 @@ const NewMember = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <XX>
       <div>
-        <p>
-          firstName:
-          <input
-            placeholder="enter your first name"
-            type="text"
-            name="firstName"
-            onChange={handleChange}
-          />
-        </p>
-        <p>
-          lastName:
-          <input
-            placeholder="enter your last name"
-            type="text"
-            name="lastName"
-            onChange={handleChange}
-          />
-        </p>
-        <p>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">Membership</InputLabel>
-            <Select labelId="demo-simple-select-label" id="demo-simple-select">
-              <MenuItem
-                name={"membership"}
-                onClick={handleClickSilver}
-                value={"Silver"}
-              >
-                Silver
-              </MenuItem>
-              <MenuItem
-                name={"membership"}
-                onClick={handleClickGold}
-                value={"Gold"}
-              >
-                Gold
-              </MenuItem>
-              <MenuItem
-                name={"membership"}
-                onClick={handleClickPlatinum}
-                value={"Platinum"}
-              >
-                Platinum
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </p>
-        <p>
-          <button>Add Member</button>
-        </p>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <p>
+              firstName:
+              <input
+                placeholder="enter your first name"
+                type="text"
+                name="firstName"
+                onChange={handleChange}
+              />
+            </p>
+            <p>
+              lastName:
+              <input
+                placeholder="enter your last name"
+                type="text"
+                name="lastName"
+                onChange={handleChange}
+              />
+            </p>
+            <p>
+              <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">
+                  Membership
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                >
+                  <MenuItem
+                    name={"membership"}
+                    onClick={handleClickSilver}
+                    value={"Silver"}
+                  >
+                    Silver
+                  </MenuItem>
+                  <MenuItem
+                    name={"membership"}
+                    onClick={handleClickGold}
+                    value={"Gold"}
+                  >
+                    Gold
+                  </MenuItem>
+                  <MenuItem
+                    name={"membership"}
+                    onClick={handleClickPlatinum}
+                    value={"Platinum"}
+                  >
+                    Platinum
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </p>
+            <p>
+              <button>Add Member</button>
+            </p>
+          </div>
+        </form>
+        <Link to="/memberslist">
+          <BodyButtons>
+            <BodyLinks>Back to list</BodyLinks>
+          </BodyButtons>
+        </Link>
       </div>
-    </form>
+    </XX>
   );
 };
 
